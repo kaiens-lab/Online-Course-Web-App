@@ -3,7 +3,6 @@ const registerValidation = require("../validation").registerValidation;
 const loginValidation = require("../validation").loginValidation;
 const User = require("../models").user;
 const jwt = require("jsonwebtoken");
-const dotenv = require("dotenv").config();
 const bcrypt = require("bcrypt");
 
 // router.use((req, res, next) => {
@@ -11,9 +10,12 @@ const bcrypt = require("bcrypt");
 //   next();
 // });
 
-// router.get("/testAPI", (req, res) => {
-//   return res.send("成功連結auth route...");
-// });
+router.get("/testAPI", (req, res) => {
+  return res.send("成功連結auth route...");
+});
+
+console.log("MONGO_URI:", process.env.MONGO_URI);
+console.log("PASSPORT_SECRET:", process.env.PASSPORT_SECRET);
 
 router.post("/register", async (req, res) => {
   //確認數據是否符合規範
@@ -49,7 +51,7 @@ router.post("/login", async (req, res) => {
     return res.status(401).send("無法找到使用者，請確認信箱是否正確");
   }
   foundUser.comparePassword(req.body.password, (err, isMatch) => {
-    if (err) return res.return(500).send(err);
+    if (err) return res.status(500).send(err);
     if (isMatch) {
       //製作json web token
       const tokenObject = { _id: foundUser._id, email: foundUser.email };
