@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_URL = "http://localhost:8080/api/course";
+const API_URL = "https://online-course-web-app.onrender.com/api/course";
 
 class CourseService {
   // Get the user's token from localStorage
