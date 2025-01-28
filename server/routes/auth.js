@@ -14,9 +14,6 @@ router.get("/testAPI", (req, res) => {
   return res.send("成功連結auth route...");
 });
 
-console.log("MONGO_URI:", process.env.MONGO_URI);
-console.log("PASSPORT_SECRET:", process.env.PASSPORT_SECRET);
-
 router.post("/register", async (req, res) => {
   //確認數據是否符合規範
   let { error } = registerValidation(req.body);
