@@ -25,8 +25,9 @@ mongoose
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: "https://online-course-web-app.netlify.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
