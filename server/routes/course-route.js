@@ -163,7 +163,7 @@ router.delete("/:_id", async (req, res) => {
     if (e.name === "CastError") {
       return res.status(400).send("無效的課程 ID 格式。");
     }
-    return res.status(500).send(e); //
+    return res.status(500).send(e);
   }
 });
 
